@@ -5,8 +5,8 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-#include "file.h"
-#include "common.h"
+#include "../include/file.h"
+#include "../include/common.h"
 
 
 int create_db_file(char *filename) {
