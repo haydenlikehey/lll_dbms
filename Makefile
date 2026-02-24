@@ -1,6 +1,8 @@
 FULLCOMP = final.mco
 SRC = $(wildcard *.c)
 OBJ = $(wildcard *.o)
+# Now supporting your compiler of choice! (maybe)
+CC = gcc
 # OBJ = $(patsubst src/%.c, obj/%.o, $(SRC))
 # OBJ = $(patsubst %.c, $(SRC))
 # $(subst from, to, text) 
@@ -17,30 +19,32 @@ OBJ = $(wildcard *.o)
 
 default: $(FULLCOMP)
 
+run: $(FULLCOMP)
+	./$(FULLCOMP)
+
 clean:
 	rm -f obj/*.o
 	rm -f *.mco
 
 $(FULLCOMP): $(SRC)
-	gcc -o $@ $? -Iinclude
+	$(CC) -o $@ $? -Iinclude
 
 build: $(OBJ)
 	make parse
 	make file
 	make main
 	make $(FULLCOMP)
-# gcc -o final.mco $?
 
 # compile_all: $(SRC)
 # 	cd ./obj
-# 	gcc -c $? -o ./obj/$@
+# 	$(CC) -c $? -o ./obj/$@
 # 	cd ..
 
 parse: parse.c
-	gcc -o obj/parse.o -c parse.c
+	$(CC) -o obj/parse.o -c source/parse.c
 
 file: file.c
-	gcc -o obj/file.o -c file.c
+	$(CC) -o obj/file.o -c source/file.c
 
 main: main.c
-	gcc -o obj/main.o -c main.c
+	$(CC) -o obj/main.o -c source/main.c
