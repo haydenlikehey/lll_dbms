@@ -48,3 +48,6 @@ file: file.c
 
 main: main.c
 	$(CC) -o obj/main.o -c source/main.c
+
+test:
+	echo "Sample Text"

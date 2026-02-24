@@ -3,6 +3,7 @@
 #include <getopt.h>
 
 int main(int argc, char *argv[]) { 
+	
 	char *filepath = NULL;
 	char *portarg = NULL;
 	unsigned short port = 0;
@@ -28,7 +29,7 @@ int main(int argc, char *argv[]) {
 				printf("Unknown option -%c\n", c);
 				break;
 			default:
-				return -1;
+				return -67;
 
 		}
 	}
